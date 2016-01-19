@@ -56,6 +56,9 @@ set -e
 
 case "$1" in
     remove|deconfigure)
+        rm -f /etc/monit/conf.d/nginx.monit
+        reload clearwater-monit || true
+
         nginx_dissite ping && service nginx reload
     ;;
 
